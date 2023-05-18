@@ -29,6 +29,16 @@ const Home = () => {
       console.error(err)
     }
   }
+  const registerNurse = async () => {
+    try {
+      await contract.methods.addNurse().send({ from: accounts[0] })
+      dispatch({
+        type: 'ADD_NURSE',
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   const ActionSection = () => {
     if (!accounts) {
@@ -43,6 +53,11 @@ const Home = () => {
           <Box display='flex' flexDirection='column' alignItems='center'>
             <Box mb={2}>
               <CustomButton text='Doctor Register' handleClick={() => registerDoctor()}>
+                <PersonAddAlt1RoundedIcon style={{ color: 'white' }} />
+              </CustomButton>
+            </Box>
+            <Box mb={2}>
+              <CustomButton text='Nurse Register' handleClick={() => registerNurse()}>
                 <PersonAddAlt1RoundedIcon style={{ color: 'white' }} />
               </CustomButton>
             </Box>
@@ -63,7 +78,15 @@ const Home = () => {
             <LoginRoundedIcon style={{ color: 'white' }} />
           </CustomButton>
         )
+      }else if (role === 'nurse') {
+        return (
+          <CustomButton text='Nurse Portal' handleClick={() => navigate('/nurses')}>
+            <LoginRoundedIcon style={{ color: 'white' }} />
+          </CustomButton>
+        )
       }
+
+
     }
   }
 
@@ -112,7 +135,8 @@ const Home = () => {
             </Typography>
           </Box>
           <ActionSection />
-          <Box display='flex' alignItems='center' mt={2}>
+          
+          {/* <Box display='flex' alignItems='center' mt={2}>
             <Typography variant='h5' color='white'>
               powered by{' '}
             </Typography>
@@ -128,7 +152,7 @@ const Home = () => {
               alt='Ethereum logo vector'
               style={{ height: 20 }}
             ></img>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     )

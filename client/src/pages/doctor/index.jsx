@@ -105,6 +105,7 @@ const Doctor = () => {
               )}
               {role === 'doctor' && (
                 <>
+                <Typography variant='h2'>Doctor's Page</Typography>
                   <Modal open={addRecord} onClose={() => setAddRecord(false)}>
                     <AddRecordModal
                       handleClose={() => setAddRecord(false)}
@@ -113,6 +114,7 @@ const Doctor = () => {
                     />
                   </Modal>
 
+                  
                   <Typography variant='h4'>Patient Records</Typography>
                   <Box display='flex' alignItems='center' my={1}>
                     <FormControl fullWidth>

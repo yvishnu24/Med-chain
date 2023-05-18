@@ -17,13 +17,19 @@ contract EHR {
   struct Doctor {
     address id;
   }
+  struct Nurse {
+    address id;
+  }
 
   mapping (address => Patient) public patients;
   mapping (address => Doctor) public doctors;
+  mapping (address => Nurse) public nurses;
+
 
   event PatientAdded(address patientId);
   event DoctorAdded(address doctorId);
   event RecordAdded(string cid, address patientId, address doctorId); 
+  event NurseAdded(address nurseId);
 
   // modifiers
 
@@ -41,7 +47,10 @@ contract EHR {
     require(doctors[msg.sender].id == msg.sender, "Sender is not a doctor");
     _;
   }
-
+  modifier senderIsNurse {
+    require(nurses[msg.sender].id == msg.sender, "Sender is not a nurse");
+    _;
+  }
   // functions
 
   function addPatient(address _patientId) public senderIsDoctor {
@@ -56,6 +65,12 @@ contract EHR {
     doctors[msg.sender].id = msg.sender;
 
     emit DoctorAdded(msg.sender);
+  }
+  function addNurse() public {
+    require(nurses[msg.sender].id != msg.sender, "This doctor already exists.");
+    nurses[msg.sender].id = msg.sender;
+
+    emit NurseAdded(msg.sender);
   }
 
   function addRecord(string memory _cid, string memory _fileName, address _patientId) public senderIsDoctor patientExists(_patientId) {
@@ -74,7 +89,9 @@ contract EHR {
       return "doctor";
     } else if (patients[msg.sender].id == msg.sender) {
       return "patient";
-    } else {
+    }else if (nurses[msg.sender].id == msg.sender){
+      return "nurse";
+    }else {
       return "unknown";
     }
   }

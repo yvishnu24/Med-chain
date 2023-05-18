@@ -1,11 +1,13 @@
 // Guards
-import Layout from './components/layouts/Layout'
+
 import AlertPopup from './components/layouts/AlertPopup'
 
 // Pages
 import Home from './pages'
-import Patient from './pages/patient'
+import Nurse from './pages/nurses'
 import Doctor from './pages/doctor'
+import Patient from './pages/patient'
+
 import HeaderAppBar from './components/layouts/Layout'
 
 const routes = [
@@ -38,6 +40,16 @@ const routes = [
             <HeaderAppBar />
             <AlertPopup />
             <Doctor />
+          </>
+        ),
+      },
+      {
+        path: 'nurses',
+        element: (
+          <>
+            <HeaderAppBar />
+            <AlertPopup />
+            <Nurse/>
           </>
         ),
       },
