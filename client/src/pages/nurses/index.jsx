@@ -19,7 +19,7 @@ const Nurse = () => {
 
   const [patientExist, setPatientExist] = useState(false)
   const [searchPatientAddress, setSearchPatientAddress] = useState('')
-//   const [addPatientAddress, setAddPatientAddress] = useState('')
+
   const [records, setRecords] = useState([])
 //   const [addRecord, setAddRecord] = useState(false)
 
