@@ -6,7 +6,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import useEth from '../../contexts/EthContext/useEth'
 import PersonAddAlt1RoundedIcon from '@mui/icons-material/PersonAddAlt1Rounded'
 import useAlert from '../../contexts/AlertContext/useAlert'
-// import AddRecordModal from './AddRecordModal'
+
 import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded'
 import ipfs from '../../ipfs'
 import Record from '../../components/Record'
